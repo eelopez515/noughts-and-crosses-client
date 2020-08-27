@@ -22,7 +22,7 @@
       <p id='message'></p>
       </div>
 
-      <section>
+      <section id="authentication">
         <form id='sign-up-form'>
           <fieldset>
             <legend><strong><em>Sign Up</em></strong></legend>
@@ -35,9 +35,7 @@
             <input type="submit" value='Sign Up'>
           </fieldset>
         </form>
-      </section>
 
-      <section>
         <form id='sign-in-form'>
           <fieldset>
             <legend><strong><em>Sign In</em></strong></legend>
@@ -48,16 +46,14 @@
             <input type='submit' value='Sign In'>
           </fieldset>
         </form>
-      </section>
 
-      <section>
         <form id='change-password-form'>
           <fieldset>
             <legend><strong><em>Change Password</em></strong></legend>
             <label for='current-password'><strong>Current Password:</strong></label>
             <input type='password' id='old-password' name='passwords[old]' placeholder='Current Password'>
             <label for='new-password'><strong>New Password:</strong></label>
-            <input type='password' id='new-password' name='passwords[old]' placeholder='New Password'>
+            <input type='password' id='new-password' name='passwords[new]' placeholder='New Password'>
             <input type='submit' value='Submit'>
           </fieldset>
         </form>
@@ -86,6 +82,9 @@
       <p id='good-game'>Good Game</p>
       <input type='submit' id='play-again' value='Play Again!'>
 
+      <form id='sign-out-form'>
+      <input type='submit' value='Sign Out!'>
+      </form>
 
 
     </body>
