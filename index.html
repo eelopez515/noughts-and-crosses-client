@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Noughts and Crosses</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,83 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <div>
+      <h1>Noughts and Crosses</h1>
+      <h3>(Also Known as Tic Tac Toe)</h3>
+      </div>
+
+      <div>
+      <input type='submit' id='play-now' value='Play Now!'>
+      <p id='winner'></p>
+      </div>
+
+      <section>
+        <form id='sing-up'>
+          <fieldset>
+            <legend><strong><em>Sign Up</em></strong></legend>
+            <label for='email-sign-up'><strong>Email:</strong></label>
+            <input type='email' id='email-sign-up' name='' placeholder='Email'>
+            <label for='sign-up-password'><strong>Password:</strong></label>
+            <input type='password' id='password-sign-up' name='' placeholder='Password'>
+            <label for='password-confirmation'><strong>Confirm Password:</strong></label>
+            <input type='password' id='password-confirmation' name='' placeholder='Confim Password'>
+            <input type="submit" value='Sign Up'>
+          </fieldset>
+        </form>
+      </section>
+
+      <section>
+        <form id='sign-in'>
+          <fieldset>
+            <legend><strong><em>Sign In</em></strong></legend>
+            <label for='email-sign-in'><strong>Email:</strong></label>
+            <input type='email' id='email-sign-in' name='' placeholder='Email'>
+            <label for='sign-in-password'><strong>Password:</strong></label>
+            <input type='password' id='password-sign-in' name='' placeholder='Password'>
+            <input type='submit' value='Sign In'>
+          </fieldset>
+        </form>
+      </section>
+
+      <section>
+        <form id='change-password'>
+          <fieldset>
+            <legend><strong><em>Change Password</em></strong></legend>
+            <label for='current-password'><strong>Current Password:</strong></label>
+            <input type='password' id='old-password' name='' placeholder='Current Password'>
+            <label for='new-password'><strong>New Password:</strong></label>
+            <input type='password' id='new-password' name='' placeholder='New Password'>
+            <input type='submit' value='Submit'>
+          </fieldset>
+        </form>
+      </section>
+
+
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cross</strong></td>
+            <td id='score-for-x'><strong>0</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Noughts</strong></td>
+            <td id='score-for-o'><strong>0</strong></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <p id='good-game'>Good Game</p>
+      <input type='submit' id='play-again' value='Play Again!'>
+
+
+
     </body>
-</html>
+
+
+    </html>
