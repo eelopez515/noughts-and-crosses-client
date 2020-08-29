@@ -1,11 +1,12 @@
 'use strict'
 const store = require('./../store')
-
+// Authentication Functionality
 const onSignUpSuccess = function (response) {
   $('#message').text('You have successfully signed up ' + response.user.email)
   $('#sign-up-form').trigger('reset')
   $('#sign-in-form').trigger('reset')
   $('#change-password-form').trigger('reset')
+  $('#sign-up-form').hide()
 }
 const onSignUpFailure = function () {
   $('#message').text('Sign up failed, please try again')
@@ -21,6 +22,9 @@ const onSignInSuccess = function (response) {
   $('#sign-up-form').trigger('reset')
   $('#change-password-form').trigger('reset')
   $('#sign-out-form').trigger('reset')
+  $('#sign-in-form').hide()
+  $('#sign-up-form').hide()
+  $('#change-password-form').hide()
 }
 const onSignInFailure = function () {
   $('#message').text('Sign in failed, please try again')
@@ -28,6 +32,8 @@ const onSignInFailure = function () {
   $('#sign-in-form').trigger('reset')
   $('#change-password-form').trigger('reset')
   $('#sign-out-form').trigger('reset')
+  $('#sign-in-form').show()
+  $('#change-password-form').show()
 }
 const onChangePasswordSuccess = function (response) {
   $('#message').text('You have successfully changed your password ' + store.user.email)
@@ -35,6 +41,7 @@ const onChangePasswordSuccess = function (response) {
   $('#sign-up-form').trigger('reset')
   $('#sign-in-form').trigger('reset')
   $('#sign-out-form').trigger('reset')
+  $('#sign-in-form').hide()
 }
 const onChangePasswordFailure = function () {
   $('#message').text('Failed to change password, try again please.')
@@ -49,6 +56,9 @@ const onSignOutSuccess = function (response) {
   $('#change-password-form').trigger('reset')
   $('#sign-up-form').trigger('reset')
   $('#sign-in-form').trigger('reset')
+  $('#sign-in-form').show()
+  $('#sign-up-form').show()
+  $('#change-password-form').show()
 }
 const onSignOutFailure = function () {
   $('#message').text('Failed to sign out, try again')

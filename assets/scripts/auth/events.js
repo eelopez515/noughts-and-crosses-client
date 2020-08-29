@@ -1,7 +1,8 @@
 'use strict'
-const getFormFields = require('./../../../lib/get-form-fields')
+const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
+
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -36,6 +37,7 @@ const onSignOut = function (event) {
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
 }
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
