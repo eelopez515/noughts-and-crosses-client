@@ -17,8 +17,9 @@
       <h3>(Also Known as Tic Tac Toe)</h3>
       </div>
 
-      <!-- <input type='submit' id='startGameButton' value='Play Now!'> -->
-      <button id='startGameButton'>Play Now</button>
+
+      <button id='start-game-button'>Play Now</button>
+      <button id='game-history'>Game History</button>
       <p id='message'></p>
 
 
@@ -62,9 +63,9 @@
       <section>
         <div class="container">
         <div class="row">
-          <div class="col-4 col-lg-4 box"></div>
-          <div class="col-4 col-lg-4 box"></div>
-          <div class="col-4 col-lg-4 box"></div>
+          <div class="col-4 col-sm-4 box"></div>
+          <div class="col-4 col-sm-4 box"></div>
+          <div class="col-4 col-sm-4 box"></div>
         </div>
         <div class="row">
           <div class="col-4 col-sm-4 box"></div>
@@ -82,7 +83,7 @@
 
 
 
-      <table>
+      <table id='score'>
         <thead>
           <tr>
             <th colspan="2">Score</th>
@@ -101,8 +102,8 @@
         </tbody>
       </table>
 
-      <p id='good-game'>Good Game</p>
-      <input type='submit' id='playAgainButton' value='Play Again!'>
+      <p id='game-message'></p>
+      <input type='submit' id='play-again-button' value='Play Again!'>
 
       <form id='sign-out-form'>
       <input type='submit' value='Sign Out!' id='signOutButon'>

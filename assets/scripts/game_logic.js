@@ -3,8 +3,10 @@ const gameUi = require('./game-ui')
 const gameApi = require('./game-api')
 const getFormFields = require('./../../lib/get-form-fields')
 
-let xChoice = 'X'
-let oChoice = 'O'
+// GAME FUNCTIONALITY
+// let xChoice = 'X'
+// let oChoice = 'O'
+let currentChoice = 'X'
 const possibleWins = [
   [0, 1, 2],
   [3, 4, 5],
@@ -15,40 +17,58 @@ const possibleWins = [
   [0, 4, 8],
   [2, 4, 6]
 ]
-const gameProgress = []
+let gameProgress = []
 
-const boxElements = document.querySelectorAll('.box')
+const boxElements = Array.from(document.querySelectorAll('.box'))
 const board = document.getElementsByClassName('.container')
-
-let oIsCurrent
-
-// function switchChoice = () => {
-//   oIsCurrent === !oIsCurrent
-// }
 
 const onClick = function (event) {
   event.preventDefault()
-  const box = event.target
-  boxElements.forEach(box => {
-    box.addEventListener(event, onClick)
-  })
-  console.log('click')
+  const boxEvent = function (box) {
+    return box === event.target
+  }
+  let index = boxElements.findIndex(boxEvent)
+  boxElements[index] = currentChoice
+  console.log(boxElements)
+  if (currentChoice === 'X') {
+    currentChoice = 'O'
+  } else {
+    currentChoice = 'X'
+  }
 }
 
+
+// GAME API
 const onStartGame = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
-
   gameApi.startGame(data)
     .then(gameUi.onStartGameSuccess)
     .catch(gameUi.onStartGameFailure)
 }
-// boxElements.forEach(box => {
-//   gameProgress.push(xChoice)
-// })
+
+const onGameHistory = function (event) {
+  event.preventDefault()
+  const form = event.target
+  const data = getFormFields(form)
+
+  gameApi.gameHistory()
+    .then(gameUi.onGameHistorySuccess)
+    .catch(gameUi.onGameHistoryFailure)
+}
+const onPlayAgain = function (event) {
+  event.preventDefault()
+  const form = event.target
+  const data = getFormFields(form)
+
+  gameApi.playAgain()
+    .then(gameUi.onPlayAgainSuccess)
+    .catch(gameUi.onPlayAgainFailure)
+}
 
 module.exports = {
   onClick: onClick,
-  onStartGame: onStartGame
+  onStartGame: onStartGame,
+  onGameHistory: onGameHistory
 }
