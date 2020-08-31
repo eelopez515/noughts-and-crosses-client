@@ -2,6 +2,7 @@
 const gameUi = require('./game-ui')
 const gameApi = require('./game-api')
 const getFormFields = require('./../../lib/get-form-fields')
+const store = require('./store')
 
 // GAME FUNCTIONALITY
 // let xChoice = 'X'
@@ -17,7 +18,11 @@ const possibleWins = [
   [0, 4, 8],
   [2, 4, 6]
 ]
-let gameProgress = []
+let gameProgress = [
+  '', '', '',
+  '', '', '',
+  '', '', ''
+]
 
 const boxElements = Array.from(document.querySelectorAll('.box'))
 const board = document.getElementsByClassName('.container')
@@ -27,9 +32,12 @@ const onClick = function (event) {
   const boxEvent = function (box) {
     return box === event.target
   }
-  let index = boxElements.findIndex(boxEvent)
-  boxElements[index] = currentChoice
-  console.log(boxElements)
+   const index = function (box) {
+    boxElements.findIndex(boxEvent)
+    boxElements[index] = currentChoice
+    gameProgress.splice(index, 1, currentChoice)
+  }
+  console.log(index)
   if (currentChoice === 'X') {
     currentChoice = 'O'
   } else {
@@ -37,6 +45,31 @@ const onClick = function (event) {
   }
 }
 
+$('#game-message').text('You are currently ' + currentChoice)
+console.log('click event index', boxElements)
+console.log('gameProgress is', gameProgress)
+
+const onMouseOver = function (event) {
+  $(this).text(currentChoice)
+}
+
+// const winner = () => {
+//   if(possibleWins === gameProgress) {
+//     $('#game-message').text(currentChoice, 'Wins')
+//   } else {
+//     $('#game-message').text('Its a Draw, Play Again.')
+//   }
+// }
+
+// const winner = () => {
+//   for (let i = 0; i < possibleWins.length; i++) {
+//     if (possibleWins[i] === gameProgress) {
+//       $('#game-message').text(currentChoice, 'Wins')
+//     } else {
+//       $('#game-message').text('Its a Draw, Play Again.')
+//     }
+//   }
+// }
 
 // GAME API
 const onStartGame = function (event) {
@@ -53,22 +86,24 @@ const onGameHistory = function (event) {
   const form = event.target
   const data = getFormFields(form)
 
-  gameApi.gameHistory()
+  gameApi.gameHistory(data)
     .then(gameUi.onGameHistorySuccess)
     .catch(gameUi.onGameHistoryFailure)
 }
-const onPlayAgain = function (event) {
+const onSaveGame = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
 
-  gameApi.playAgain()
-    .then(gameUi.onPlayAgainSuccess)
-    .catch(gameUi.onPlayAgainFailure)
+  gameApi.saveGame(data)
+    .then(gameUi.onSaveGameSuccess)
+    .catch(gameUi.onSaveGameFailure)
 }
 
 module.exports = {
   onClick: onClick,
   onStartGame: onStartGame,
-  onGameHistory: onGameHistory
+  onGameHistory: onGameHistory,
+  onSaveGame: onSaveGame,
+  gameProgress: gameProgress
 }

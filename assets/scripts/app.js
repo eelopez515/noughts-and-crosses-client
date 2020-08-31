@@ -14,7 +14,7 @@ $(() => {
   // Game Events
   $('#start-game-button').on('click', gameLogic.onStartGame)
   $('#game-history').on('click', gameLogic.onGameHistory)
-  $('#play-again-button').on('click', gameLogic.onPlayAgain)
+  $('#save-game').on('click', gameLogic.onSaveGame)
   $('.box').one('click', gameLogic.onClick)
-
+  $('.box').on('mouseover', gameLogic.onMouseOver)
 })
