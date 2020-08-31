@@ -18,39 +18,30 @@ const possibleWins = [
   [0, 4, 8],
   [2, 4, 6]
 ]
-let gameProgress = [
+
+let gameBoard = [
   '', '', '',
   '', '', '',
   '', '', ''
 ]
+
 
 const boxElements = Array.from(document.querySelectorAll('.box'))
 const board = document.getElementsByClassName('.container')
 
 const onClick = function (event) {
   event.preventDefault()
-  const boxEvent = function (box) {
+const index = boxElements.findIndex(function (box) {
     return box === event.target
-  }
-   const index = function (box) {
-    boxElements.findIndex(boxEvent)
-    boxElements[index] = currentChoice
-    gameProgress.splice(index, 1, currentChoice)
-  }
-  console.log(index)
+})
+  boxElements[index] = currentChoice
+  gameBoard.splice(index, 1, currentChoice)
   if (currentChoice === 'X') {
     currentChoice = 'O'
   } else {
     currentChoice = 'X'
   }
-}
-
-$('#game-message').text('You are currently ' + currentChoice)
-console.log('click event index', boxElements)
-console.log('gameProgress is', gameProgress)
-
-const onMouseOver = function (event) {
-  $(this).text(currentChoice)
+  console.log(gameBoard)
 }
 
 // const winner = () => {
@@ -105,5 +96,5 @@ module.exports = {
   onStartGame: onStartGame,
   onGameHistory: onGameHistory,
   onSaveGame: onSaveGame,
-  gameProgress: gameProgress
+  // gameProgress: gameProgress
 }

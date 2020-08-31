@@ -1,23 +1,91 @@
 @import '~bootstrap/scss/bootstrap';
 
+$box-width: 150px;
+$box-height: 150px;
+$x-o-color: rgb(0, 78, 150);
+$all-background-color: rgb(255, 255, 255);
+$x-o-light-color: rgb(207, 242, 255);
+
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: $all-background-color;
 }
-.container{
+.container {
   margin-top: 35px;
   width: 500px;
 }
 
 .box {
-  align-items: center;
-  background-color: rgb(221, 221, 221);
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
   color: rgb(0, 0, 0);
-  height: 150px;
+  width: $box-width;
+  height: $box-height;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  border-top: none;
+  border-left: none;
+  cursor: none;
 
-  &:hover {
-    background-color: rgb(96, 207, 231)
+  &:nth-child(3n+3) {
+    border-right: none;
   }
+  &:last-child,
+  &:nth-child(8),
+  &:nth-child(7) {
+    border-bottom: none;
+  }
+}
+.box.x,
+.box.o{
+  cursor: not-allowed;
+}
+.box.x::before,
+.box.x::after,
+.box.o::before {
+  background-color: $x-o-color;
+}
+.box:not(.x):not(.o):hover::before,
+.box:not(.x):not(.o):hover::after,
+.box:not(.x):not(.o):hover::before {
+  background-color: $x-o-light-color;
+}
+.box.x::before,
+.box.x::after,
+.row.x .box:not(.x):not(.o):hover::before,
+.row.x .box:not(.x):not(.o):hover::after {
+  content: '';
+  width: 150px;
+  height: 18px;
+  position: absolute;
+}
+
+.box.x::before,
+.row.x .box:not(.x):not(.o):hover::before {
+  transform: rotate(-45deg);
+}
+
+.box.x::after,
+.row.x .box:not(.x):not(.o):hover::after {
+  transform: rotate(45deg);
+}
+
+.box.o::before,
+.box.o::after,
+.row.o .box:not(.x):not(.o):hover::before,
+.row.o .box:not(.x):not(.o):hover::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.box.o::before,
+.row.o .box:not(.x):not(.o):hover::before {
+  width: 130px;
+  height: 130px;
+}
+.box.o::after,
+.row.o .box:not(.x):not(.o):hover::after {
+  width: 100px;
+  height: 100px;
+  background-color: $all-background-color;
 }
