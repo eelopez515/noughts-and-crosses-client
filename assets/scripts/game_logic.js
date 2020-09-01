@@ -5,9 +5,11 @@ const getFormFields = require('./../../lib/get-form-fields')
 const store = require('./store')
 
 // GAME FUNCTIONALITY
-// let xChoice = 'X'
-// let oChoice = 'O'
-let currentChoice = 'X'
+const boxElements = Array.from(document.querySelectorAll('.box'))
+const board = document.getElementsByClassName('.row')
+let xChoice = 'x'
+let oChoice = 'o'
+let currentChoice = 'x'
 const possibleWins = [
   [0, 1, 2],
   [3, 4, 5],
@@ -25,46 +27,49 @@ let gameBoard = [
   '', '', ''
 ]
 
-
-const boxElements = Array.from(document.querySelectorAll('.box'))
-const board = document.getElementsByClassName('.container')
+// beginGame()
 
 const onClick = function (event) {
   event.preventDefault()
-const index = boxElements.findIndex(function (box) {
+  const box = event.target
+
+
+  // const xOrO = currentChoice ? xChoice : oChoice
+  const boxEventIndex = boxElements.findIndex(function (box) {
     return box === event.target
 })
-  boxElements[index] = currentChoice
-  gameBoard.splice(index, 1, currentChoice)
-  if (currentChoice === 'X') {
-    currentChoice = 'O'
+document.getElementById(boxEventIndex).classList.add('box', currentChoice)
+document.getElementById('board').classList.add('row', currentChoice)
+
+  boxElements[boxEventIndex] = currentChoice
+  gameBoard.splice(boxEventIndex, 1, currentChoice)
+
+
+
+
+switchChoice()
+console.log(gameBoard)
+console.log(currentChoice)
+}
+// }
+
+// Functions
+function switchChoice () {
+  if (currentChoice === 'x') {
+    currentChoice = 'o'
   } else {
-    currentChoice = 'X'
+    currentChoice = 'x'
   }
-  console.log(gameBoard)
 }
 
-// const winner = () => {
-//   if(possibleWins === gameProgress) {
-//     $('#game-message').text(currentChoice, 'Wins')
-//   } else {
-//     $('#game-message').text('Its a Draw, Play Again.')
-//   }
-// }
 
-// const winner = () => {
-//   for (let i = 0; i < possibleWins.length; i++) {
-//     if (possibleWins[i] === gameProgress) {
-//       $('#game-message').text(currentChoice, 'Wins')
-//     } else {
-//       $('#game-message').text('Its a Draw, Play Again.')
-//     }
-//   }
-// }
 
 // GAME API
 const onStartGame = function (event) {
   event.preventDefault()
+  const send = document.getElementById('board')
+  send.classList.add('row', currentChoice)
+  console.log(send)
   const form = event.target
   const data = getFormFields(form)
   gameApi.startGame(data)
