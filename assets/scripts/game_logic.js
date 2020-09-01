@@ -67,9 +67,7 @@ function switchChoice () {
 // GAME API
 const onStartGame = function (event) {
   event.preventDefault()
-  const send = document.getElementById('board')
-  send.classList.add('row', currentChoice)
-  console.log(send)
+  document.getElementById('board').classList.add('row', currentChoice)
   const form = event.target
   const data = getFormFields(form)
   gameApi.startGame(data)
