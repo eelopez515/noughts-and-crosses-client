@@ -5,11 +5,7 @@ const gameApi = require('./game-api')
 const getFormFields = require('./../../lib/get-form-fields')
 const store = require('./store')
 
-// GAME FUNCTIONALITY
-// const boxElements = Array.from(document.querySelectorAll('.box'))
-// const board = document.getElementsByClassName('.row')
-// let xChoice = 'x'
-// let oChoice = 'o'
+
 let currentChoice = 'X'
 let boxEventIndex = null
 let over = false
