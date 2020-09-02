@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Noughts and Crosses</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,111 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <div>
+      <h1>Noughts and Crosses</h1>
+      <h3>(Also Known as Tic Tac Toe)</h3>
+      </div>
+
+      <div id="button">
+      <button id='start-game-button'>Start New Game</button>
+      <button id='save-game'>Save Game</button>
+      <!-- <button id='continue-saved-game'>Continue Saved Game</button> -->
+      <button id='game-history'>Game History</button>
+    </div>
+      <p class='paragraph' id='message'></p>
+      <p class='paragraph' id='win-message'></p>
+
+
+      <section id="authentication">
+        <form id='sign-up-form'>
+          <fieldset>
+            <legend><strong><em>Sign Up</em></strong></legend>
+            <label for='email-sign-up'><strong>Email:</strong></label>
+            <input type='email' id='email-sign-up' name='credentials[email]' placeholder='example@example.com'>
+            <label for='sign-up-password'><strong>Password:</strong></label>
+            <input type='password' id='password-sign-up' name='credentials[password]' placeholder='Password'>
+            <label for='password-confirmation'><strong>Confirm Password:</strong></label>
+            <input type='password' id='password-confirmation' name='credentials[password_confirmation]' placeholder='Confim Password'>
+            <input type="submit" value='Sign Up' id='sign-up-button'>
+          </fieldset>
+        </form>
+
+        <form id='sign-in-form'>
+          <fieldset>
+            <legend><strong><em>Sign In</em></strong></legend>
+            <label for='email-sign-in'><strong>Email:</strong></label>
+            <input type='email' id='email-sign-in' name='credentials[email]' placeholder='Email'>
+            <label for='sign-in-password'><strong>Password:</strong></label>
+            <input type='password' id='password-sign-in' name='credentials[password]' placeholder='Password'>
+            <input type='submit' value='Sign In' id='sign-in-button'>
+          </fieldset>
+        </form>
+
+        <form id='change-password-form'>
+          <fieldset>
+            <legend><strong><em>Change Password</em></strong></legend>
+            <label for='current-password'><strong>Current Password:</strong></label>
+            <input type='password' id='old-password' name='passwords[old]' placeholder='Current Password'>
+            <label for='new-password'><strong>New Password:</strong></label>
+            <input type='password' id='new-password' name='passwords[new]' placeholder='New Password'>
+            <input type='submit' value='Submit' id='change-password-button'>
+          </fieldset>
+        </form>
+      </section>
+
+        <p class='paragraph' id='play-again-message'></p>
+        <p class='paragraph' id='game-message'></p>
+
+
+      <section>
+        <div class="container">
+        <div class="row" id="board">
+          <div class="col-4 box 0" id='0' data-cell-index=0></div>
+          <div class="col-4 box 1" id='1' data-cell-index=1></div>
+          <div class="col-4 box 2" id='2' data-cell-index=2></div>
+        <!-- </div>
+        <div class="row"> -->
+          <div class="col-4 box 3" id='3' data-cell-index=3></div>
+          <div class="col-4 box 4" id='4' data-cell-index=4></div>
+          <div class="col-4 box 5" id='5' data-cell-index=5></div>
+        <!-- </div>
+        <div class="row"> -->
+          <div class="col-4 box 6" id='6' data-cell-index=6></div>
+          <div class="col-4 box 7" id='7' data-cell-index=7></div>
+          <div class="col-4 box 8" id='8' data-cell-index=8></div>
+        </div>
+      </div>
+      </section>
+
+
+
+
+      <!-- <table id='score'>
+        <thead>
+          <tr>
+            <th colspan="2">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cross</strong></td>
+            <td id='score-for-x'><strong>0</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Noughts</strong></td>
+            <td id='score-for-o'><strong>0</strong></td>
+          </tr>
+
+        </tbody>
+      </table> -->
+
+      <div id='button'>
+      <input type='submit' id='play-again-button' value='Play Again'>
+      <input type='submit' id='sign-out-button' value='Sign Out!'>
+      </div>
+
+
     </body>
-</html>
+
+
+    </html>
