@@ -12,6 +12,7 @@ const onStartGameSuccess = function (response) {
   $('#play-again-button').show()
   $('#sign-out-button').show()
   $('#change-password-form').hide()
+  $('#save-game').show()
 }
 const onStartGameFailure = function () {
   $('#game-message').text('Unable to Start Game, Try Again.')

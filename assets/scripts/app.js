@@ -9,6 +9,7 @@ $(() => {
   $('#score').hide()
   $('#play-again-button').hide()
   $('#sign-out-button').hide()
+  $('#save-game').hide()
   // Authentication Events
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
