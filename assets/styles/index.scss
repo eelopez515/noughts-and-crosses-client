@@ -25,7 +25,14 @@ body {
   position: relative;
   border-top: none;
   border-left: none;
-  cursor: none;
+  font-size: 100px;
+  color: $x-o-color;
+
+  &:hover{
+    background-color: $x-o-light-color;
+
+  }
+
 
   &:nth-child(3n+3) {
     border-right: none;
@@ -36,56 +43,154 @@ body {
     border-bottom: none;
   }
 }
-.box.x,
-.box.o{
-  cursor: not-allowed;
+h1{
+  color: $x-o-light-color;
+  background-color: $x-o-color;
+  text-align: center;
+  border: 3px $x-o-light-color solid;
+  border-radius: 50%;
+  margin: 20px 150px 0px 150px;
+  padding: 20px 0px 20px 0px;
 }
-.box.x::before,
-.box.x::after,
-.box.o::before {
+h3{
+  text-align: center;
+  margin: 10px 0px 10px 0px;
+  color: $x-o-color;
+}
+.paragraph{
+  text-align: center;
+  color: $x-o-color;
+}
+#button{
+  text-align: center;
+  margin: 30px;
+}
+#play-again-button{
+  text-align: center;
+}
+#sign-out-button{
+  text-align: center;
+}
+#start-game-button{
+   margin: 5px;
+   font-weight: bold;
+   border: 2px solid $x-o-light-color;
+   color: $x-o-light-color;
+   background-color: $x-o-color;
+ }
+ #start-game-button:hover{
+   border: 2px solid $x-o-color;
+   color: $x-o-color;
+   background-color: $x-o-light-color;
+ }
+#save-game{
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
   background-color: $x-o-color;
 }
-.box:not(.x):not(.o):hover::before,
-.box:not(.x):not(.o):hover::after,
-.box:not(.x):not(.o):hover::before {
+#save-game:hover {
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
   background-color: $x-o-light-color;
 }
-.box.x::before,
-.box.x::after,
-.row.x .box:not(.x):not(.o):hover::before,
-.row.x .box:not(.x):not(.o):hover::after {
-  content: '';
-  width: 150px;
-  height: 18px;
-  position: absolute;
+#game-history {
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
+  background-color: $x-o-color;
 }
+#game-history:hover {
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
+  background-color: $x-o-light-color;
+}
+#play-again-button {
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
+  background-color: $x-o-color;
+}
+#play-again-button:hover {
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
+  background-color: $x-o-light-color;
+}
+#sign-out-button {
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
+  background-color: $x-o-color;
+}
+#sign-out-button:hover {
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
+  background-color: $x-o-light-color;
+}
+#sign-up-form{
+  color: $x-o-color;
+  text-align: center;
+  margin: 30px;
+}
+#sign-up-button{
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
+  background-color: $x-o-color;
+}
+#sign-up-button:hover{
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
+  background-color: $x-o-light-color;
+}
+#sign-in-form{
+  color: $x-o-color;
+  display: block;
+  text-align: center;
+  margin: 30px;
+}
+#sign-in-button{
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
+  background-color: $x-o-color;
+}
+#sign-in-button:hover{
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
+  background-color: $x-o-light-color;
+}
+#change-password-form {
+  color: $x-o-color;
+  text-align: center;
+  margin: 30px;
+}
+#change-password-button {
+  margin: 5px;
+  font-weight: bold;
+  border: 2px solid $x-o-light-color;
+  color: $x-o-light-color;
+  background-color: $x-o-color;
+}
+#change-password-button:hover {
+  border: 2px solid $x-o-color;
+  color: $x-o-color;
+  background-color: $x-o-light-color;
+}
+::placeholder{
+  color: $x-o-color;
+  font-style: italic;
+  font-size: 15px;
+  text-align: center;
 
-.box.x::before,
-.row.x .box:not(.x):not(.o):hover::before {
-  transform: rotate(-45deg);
 }
-
-.box.x::after,
-.row.x .box:not(.x):not(.o):hover::after {
-  transform: rotate(45deg);
-}
-
-.box.o::before,
-.box.o::after,
-.row.o .box:not(.x):not(.o):hover::before,
-.row.o .box:not(.x):not(.o):hover::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-}
-.box.o::before,
-.row.o .box:not(.x):not(.o):hover::before {
-  width: 130px;
-  height: 130px;
-}
-.box.o::after,
-.row.o .box:not(.x):not(.o):hover::after {
-  width: 100px;
-  height: 100px;
-  background-color: $all-background-color;
+#authentication{
+  position: relative;
+  align-items: center;
 }

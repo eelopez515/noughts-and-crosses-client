@@ -1,5 +1,6 @@
 'use strict'
 const store = require('./../store')
+const gameLogic = require('./../game_logic')
 // Authentication Functionality
 const onSignUpSuccess = function (response) {
   $('#message').text('You have successfully signed up ' + response.user.email)
@@ -59,6 +60,10 @@ const onSignOutSuccess = function (response) {
   $('#sign-in-form').show()
   $('#sign-up-form').show()
   $('#change-password-form').show()
+  $('.container').hide()
+  $('.paragraph').hide()
+  $('#sign-out-button').hide()
+  // $('.container').hide()
 }
 const onSignOutFailure = function () {
   $('#message').text('Failed to sign out, try again')

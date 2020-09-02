@@ -6,20 +6,19 @@ const gameLogic = require('./game_logic')
 
 const onStartGameSuccess = function (response) {
   gameStore.game = response.game
-  console.log('response is', response)
-  console.log('gamestore is', gameStore.game._id)
   $('#message').text('Good Luck, Have Fun ' + store.user.email)
   $('#game-message').text('X Goes First')
   $('.container').show()
-  $('#score').show()
+  $('#play-again-button').show()
+  $('#sign-out-button').show()
 }
-
 const onStartGameFailure = function () {
   $('#game-message').text('Unable to Start Game, Try Again.')
 }
 
-const onGameHistorySuccess = function (response) {
+const onGameHistorySuccess = function (data) {
   $('#game-message').text('Here is your game history ' + store.user.email)
+  $('#game-message').text('You have played ' + data.games.length + ' games ' + store.user.email)
 }
 
 const onGameHistoryFailure = function () {
@@ -28,10 +27,23 @@ const onGameHistoryFailure = function () {
 const onSaveGameSuccess = function (response) {
   console.log(response)
   console.log(store)
-  $('#game-message').text('You have successfully save your game ' + store.user.email)
+  $('#game-message').text('You have successfully saved your game ' + store.user.email)
 }
 const onSaveGameFailure = function () {
   $('#game-message').text('Unable to Save Game, Try Again.')
+}
+const onPlayAgainSuccess = function (response) {
+  $('#play-again-message').text('New Game Started ' + store.user.email)
+  $('#message').hide()
+  $('.box').html('')
+  onStartGame()
+}
+const onPlayAgainFailure = function () {
+  $('#game-message').text('Unable to Start A New Game, Try Again.')
+
+}
+const onWinningGame = function (currentChoice) {
+  $('#message').hide()
 }
 
 module.exports = {
@@ -40,5 +52,8 @@ module.exports = {
   onGameHistorySuccess: onGameHistorySuccess,
   onGameHistoryFailure: onGameHistoryFailure,
   onSaveGameSuccess: onSaveGameSuccess,
-  onSaveGameFailure: onSaveGameFailure
+  onSaveGameFailure: onSaveGameFailure,
+  onPlayAgainSuccess: onPlayAgainSuccess,
+  onPlayAgainFailure: onPlayAgainFailure,
+  onWinningGame: onWinningGame
 }
