@@ -25,7 +25,7 @@ const onSignInSuccess = function (response) {
   $('#sign-out-form').trigger('reset')
   $('#sign-in-form').hide()
   $('#sign-up-form').hide()
-  $('#change-password-form').hide()
+  $('#game-message').show()
 }
 const onSignInFailure = function () {
   $('#message').text('Sign in failed, please try again')

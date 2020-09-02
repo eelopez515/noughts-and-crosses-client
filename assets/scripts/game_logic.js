@@ -43,12 +43,9 @@ const onClick = function (event) {
   if ((over === false) && ($(box).text() !== 'x' && $(box).text() !== 'o')) {
     $(box).attr(currentChoice)
     const boxEventIndex = $(box).attr('data-cell-index')
-    console.log(boxEventIndex)
 
     gameBoard[boxEventIndex] = currentChoice
     $(box).text(currentChoice)
-
-
 
     const data = {
       game: {
@@ -65,9 +62,7 @@ const onClick = function (event) {
     switchChoice()
     gameApi.saveGame(data)
     $('#game-message').text("It's " + currentChoice.toUpperCase() + "'s turn.")
-
-
-}
+  }
 }
 // Functions
 function switchChoice () {
@@ -109,7 +104,7 @@ const onStartGame = function (event) {
     .catch(gameUi.onStartGameFailure)
 }
 
-const onGameHistory = function(event) {
+const onGameHistory = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
@@ -119,7 +114,7 @@ const onGameHistory = function(event) {
     .catch(gameUi.onGameHistoryFailure)
 }
 
-const onSaveGame = function(event) {
+const onSaveGame = function (event) {
   event.preventDefault()
 
   gameApi.saveGame(data)
@@ -139,7 +134,6 @@ const onPlayAgain = function(event) {
   gameApi.playAgain(data)
     .then(gameUi.onPlayAgainSuccess)
     .catch(gameUi.onPlayAgainFailure)
-
 }
 
 module.exports = {

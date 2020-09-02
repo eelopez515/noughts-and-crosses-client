@@ -11,6 +11,7 @@ const onStartGameSuccess = function (response) {
   $('.container').show()
   $('#play-again-button').show()
   $('#sign-out-button').show()
+  $('#change-password-form').hide()
 }
 const onStartGameFailure = function () {
   $('#game-message').text('Unable to Start Game, Try Again.')
@@ -18,7 +19,7 @@ const onStartGameFailure = function () {
 
 const onGameHistorySuccess = function (data) {
   $('#game-message').text('Here is your game history ' + store.user.email)
-  $('#game-message').text('You have played ' + data.games.length + ' games ' + store.user.email)
+  $('#game-message').text('You have played ' + data.games.length + ' game(s) ' + store.user.email)
 }
 
 const onGameHistoryFailure = function () {
