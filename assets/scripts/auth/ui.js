@@ -26,6 +26,9 @@ const onSignInSuccess = function (response) {
   $('#sign-in-form').hide()
   $('#sign-up-form').hide()
   $('#game-message').show()
+  $('#change-password-form').show()
+  $('#start-game-button').show()
+  $('#game-history').show()
 }
 const onSignInFailure = function () {
   $('#message').text('Sign in failed, please try again')
@@ -34,7 +37,7 @@ const onSignInFailure = function () {
   $('#change-password-form').trigger('reset')
   $('#sign-out-form').trigger('reset')
   $('#sign-in-form').show()
-  $('#change-password-form').show()
+  $('#change-password-form').hide()
 }
 const onChangePasswordSuccess = function (response) {
   $('#message').text('You have successfully changed your password ' + store.user.email)

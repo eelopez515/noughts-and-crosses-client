@@ -38,21 +38,21 @@ const saveGame = function (data) {
   })
 }
 
-const playAgain = function (data) {
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    },
-    data: data
-  })
-}
+// const playAgain = function (data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games',
+//     method: 'POST',
+//     headers: {
+//       Authorization: 'Bearer ' + store.user.token
+//     },
+//     data: data
+//   })
+// }
 
 
 module.exports = {
   startGame: startGame,
   gameHistory: gameHistory,
   saveGame: saveGame,
-  playAgain: playAgain
+  // playAgain: playAgain
 }

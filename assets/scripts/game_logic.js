@@ -94,6 +94,9 @@ const drawGame = function () {
 // API
 const onStartGame = function (event) {
   event.preventDefault()
+  // over = false
+  // currentChoice = 'x'
+  // gameBoard = ['', '', '', '', '', '', '', '', '']
 
   gameApi.startGame(data)
     .then(gameUi.onStartGameSuccess)
@@ -118,25 +121,25 @@ const onSaveGame = function (event) {
     .catch(gameUi.onSaveGameFailure)
 }
 
-const onPlayAgain = function(event) {
-  event.preventDefault()
-  over = false
-  currentChoice = 'x'
-  gameBoard = ['', '', '', '', '', '', '', '', '']
-
-  onStartGame(event)
-  onSaveGame(event)
-
-  gameApi.playAgain(data)
-    .then(gameUi.onPlayAgainSuccess)
-    .catch(gameUi.onPlayAgainFailure)
-}
+// const onPlayAgain = function(event) {
+//   event.preventDefault()
+//   over = false
+//   currentChoice = 'x'
+//   gameBoard = ['', '', '', '', '', '', '', '', '']
+//
+//   onStartGame(event)
+//   onSaveGame(event)
+//
+//   gameApi.playAgain(data)
+//     .then(gameUi.onPlayAgainSuccess)
+//     .catch(gameUi.onPlayAgainFailure)
+// }
 
 module.exports = {
   onClick: onClick,
   onStartGame: onStartGame,
   onGameHistory: onGameHistory,
   onSaveGame: onSaveGame,
-  onPlayAgain: onPlayAgain
+  // onPlayAgain: onPlayAgain
   // gameProgress: gameProgress
 }

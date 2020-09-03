@@ -34,16 +34,16 @@ const onSaveGameSuccess = function (response) {
 const onSaveGameFailure = function () {
   $('#game-message').text('Unable to Save Game, Try Again.')
 }
-const onPlayAgainSuccess = function (response) {
-  $('#play-again-message').text('New Game Started ' + store.user.email)
-  $('#message').hide()
-  $('.box').html('')
-  onStartGame()
-}
-const onPlayAgainFailure = function () {
-  $('#game-message').text('Unable to Start A New Game, Try Again.')
-
-}
+// const onPlayAgainSuccess = function (response) {
+//   $('#play-again-message').text('New Game Started ' + store.user.email)
+//   $('#message').hide()
+//   $('.box').html('')
+//   onStartGame()
+// }
+// const onPlayAgainFailure = function () {
+//   $('#game-message').text('Unable to Start A New Game, Try Again.')
+//
+// }
 const onWinningGame = function (currentChoice) {
   $('#message').hide()
 }
@@ -55,7 +55,7 @@ module.exports = {
   onGameHistoryFailure: onGameHistoryFailure,
   onSaveGameSuccess: onSaveGameSuccess,
   onSaveGameFailure: onSaveGameFailure,
-  onPlayAgainSuccess: onPlayAgainSuccess,
-  onPlayAgainFailure: onPlayAgainFailure,
+  // onPlayAgainSuccess: onPlayAgainSuccess,
+  // onPlayAgainFailure: onPlayAgainFailure,
   onWinningGame: onWinningGame
 }
