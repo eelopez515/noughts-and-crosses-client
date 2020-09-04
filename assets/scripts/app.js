@@ -6,8 +6,6 @@ const gameLogic = require('./game_logic')
 
 $(() => {
   $('.container').hide()
-  $('#score').hide()
-  $('#play-again-button').hide()
   $('#sign-out-button').hide()
   $('#save-game').hide()
   $('#change-password-form').hide()
@@ -23,7 +21,5 @@ $(() => {
   $('#start-game-button').on('click', gameLogic.onStartGame)
   $('#game-history').on('click', gameLogic.onGameHistory)
   $('#save-game').on('click', gameLogic.onSaveGame)
-  // $('#play-again-button').on('click', gameLogic.onPlayAgain)
-  $('.box').one('click', gameLogic.onClick)
-  // $('.box').on('mouseover', gameLogic.onMouseOver)
+  $('.box').on('click', gameLogic.onClick)
 })

@@ -5,7 +5,7 @@ const gameApi = require('./game-api')
 const getFormFields = require('./../../lib/get-form-fields')
 const store = require('./store')
 
-
+// Game Functionality\
 let currentChoice = 'X'
 let boxEventIndex = null
 let over = false
@@ -32,12 +32,12 @@ const possibleWins = [
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 
-const onClick = function (event) {
+const onClick = function(event) {
   event.preventDefault()
   $('#message').hide()
+  $('#game-message').show()
   const box = event.target
   if ((over === false) && ($(box).text() !== 'x' && $(box).text() !== 'o')) {
-    $(box).attr(currentChoice)
     const boxEventIndex = $(box).attr('data-cell-index')
 
     gameBoard[boxEventIndex] = currentChoice
@@ -52,16 +52,19 @@ const onClick = function (event) {
         over: over
       }
     }
+
     whoWon()
-    gameUi.onWinningGame(currentChoice)
     drawGame()
     switchChoice()
+    $('#game-message').text("It's " + currentChoice + "'s turn.")
     gameApi.saveGame(data)
-    $('#game-message').text("It's " + currentChoice.toUpperCase() + "'s turn.")
+    $(event.target).css('pointer-events', 'none')
+    console.log(gameBoard)
+    console.log(over)
   }
 }
 // Functions
-function switchChoice () {
+function switchChoice() {
   if (currentChoice === 'X') {
     currentChoice = 'O'
   } else {
@@ -69,7 +72,7 @@ function switchChoice () {
   }
 }
 
-const whoWon = function () {
+const whoWon = function() {
   for (let i = 0; i < possibleWins.length; i++) {
     const winningArray = []
     const singleWin = possibleWins[i]
@@ -78,32 +81,36 @@ const whoWon = function () {
     winningArray.push(gameBoard[singleWin[2]])
 
     if (winningArray[0] === winningArray[1] && winningArray[1] === winningArray[2] && winningArray[0] !== '') {
+      $('#game-message').hide()
+      $('#game-winner').html(`The Winner is ${currentChoice}!`)
       over = true
     }
   }
 }
 
-const drawGame = function () {
+const drawGame = function() {
   const draw = gameBoard.includes('')
   if (draw !== true && over === false) {
     over = true
-    $('#game-message').text('The Game is a Draw')
+    $('#game-message').hide()
+    $('#game-winner').html('The Game is a Draw!')
   }
 }
 
-// API
-const onStartGame = function (event) {
-  event.preventDefault()
-  // over = false
-  // currentChoice = 'x'
-  // gameBoard = ['', '', '', '', '', '', '', '', '']
 
+// API
+const onStartGame = function(event) {
+  event.preventDefault()
+  over = false
+  currentChoice = 'X'
+  gameBoard = ['', '', '', '', '', '', '', '', '']
+  $('.box').css('pointer-events', 'auto')
   gameApi.startGame(data)
     .then(gameUi.onStartGameSuccess)
     .catch(gameUi.onStartGameFailure)
 }
 
-const onGameHistory = function (event) {
+const onGameHistory = function(event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
@@ -113,7 +120,7 @@ const onGameHistory = function (event) {
     .catch(gameUi.onGameHistoryFailure)
 }
 
-const onSaveGame = function (event) {
+const onSaveGame = function(event) {
   event.preventDefault()
 
   gameApi.saveGame(data)
@@ -121,25 +128,12 @@ const onSaveGame = function (event) {
     .catch(gameUi.onSaveGameFailure)
 }
 
-// const onPlayAgain = function(event) {
-//   event.preventDefault()
-//   over = false
-//   currentChoice = 'x'
-//   gameBoard = ['', '', '', '', '', '', '', '', '']
-//
-//   onStartGame(event)
-//   onSaveGame(event)
-//
-//   gameApi.playAgain(data)
-//     .then(gameUi.onPlayAgainSuccess)
-//     .catch(gameUi.onPlayAgainFailure)
-// }
+
 
 module.exports = {
   onClick: onClick,
   onStartGame: onStartGame,
   onGameHistory: onGameHistory,
   onSaveGame: onSaveGame,
-  // onPlayAgain: onPlayAgain
-  // gameProgress: gameProgress
+
 }

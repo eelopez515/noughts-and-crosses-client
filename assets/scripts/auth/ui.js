@@ -7,7 +7,7 @@ const onSignUpSuccess = function (response) {
   $('#sign-up-form').trigger('reset')
   $('#sign-in-form').trigger('reset')
   $('#change-password-form').trigger('reset')
-  $('#sign-up-form').hide()
+  // $('#sign-up-form').hide()
 }
 const onSignUpFailure = function () {
   $('#message').text('Sign up failed, please try again')
@@ -25,7 +25,7 @@ const onSignInSuccess = function (response) {
   $('#sign-out-form').trigger('reset')
   $('#sign-in-form').hide()
   $('#sign-up-form').hide()
-  $('#game-message').show()
+  $('#game-message').hide()
   $('#change-password-form').show()
   $('#start-game-button').show()
   $('#game-history').show()
@@ -55,6 +55,7 @@ const onChangePasswordFailure = function () {
   $('#sign-out-form').trigger('reset')
 }
 const onSignOutSuccess = function (response) {
+  $('#message').show()
   $('#message').text('You have successfully signed out ' + store.user.email)
   $('#sign-out-form').trigger('reset')
   $('#change-password-form').trigger('reset')
@@ -64,9 +65,14 @@ const onSignOutSuccess = function (response) {
   $('#sign-up-form').show()
   $('#change-password-form').show()
   $('.container').hide()
-  $('.paragraph').hide()
   $('#sign-out-button').hide()
-  // $('.container').hide()
+  $('#sign-out-button').hide()
+  $('#save-game').hide()
+  $('#change-password-form').hide()
+  $('#start-game-button').hide()
+  $('#game-history').hide()
+  $('#game-winner').empty()
+  $('#game-message').empty()
 }
 const onSignOutFailure = function () {
   $('#message').text('Failed to sign out, try again')
