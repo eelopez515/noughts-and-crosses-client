@@ -56,7 +56,11 @@ const onClick = function(event) {
     whoWon()
     drawGame()
     switchChoice()
-    $('#game-message').text("It's " + currentChoice + "'s turn.")
+    if(over === false) {
+      $('#game-message').text("It's " + currentChoice + "'s turn.")
+    } else {
+      $('#game-message').empty()
+    }
     gameApi.saveGame(data)
     $(event.target).css('pointer-events', 'none')
     console.log(gameBoard)
@@ -81,7 +85,6 @@ const whoWon = function() {
     winningArray.push(gameBoard[singleWin[2]])
 
     if (winningArray[0] === winningArray[1] && winningArray[1] === winningArray[2] && winningArray[0] !== '') {
-      $('#game-message').hide()
       $('#game-winner').html(`The Winner is ${currentChoice}!`)
       over = true
     }
