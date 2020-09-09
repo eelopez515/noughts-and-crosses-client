@@ -32,7 +32,7 @@ const possibleWins = [
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 
-const onClick = function(event) {
+const onClick = function (event) {
   event.preventDefault()
   $('#message').hide()
   $('#game-message').show()
@@ -56,19 +56,17 @@ const onClick = function(event) {
     whoWon()
     drawGame()
     switchChoice()
-    if(over === false) {
+    if (over === false) {
       $('#game-message').text("It's " + currentChoice + "'s turn.")
     } else {
       $('#game-message').empty()
     }
     gameApi.saveGame(data)
     $(event.target).css('pointer-events', 'none')
-    console.log(gameBoard)
-    console.log(over)
   }
 }
 // Functions
-function switchChoice() {
+function switchChoice () {
   if (currentChoice === 'X') {
     currentChoice = 'O'
   } else {
@@ -76,7 +74,7 @@ function switchChoice() {
   }
 }
 
-const whoWon = function() {
+const whoWon = function () {
   for (let i = 0; i < possibleWins.length; i++) {
     const winningArray = []
     const singleWin = possibleWins[i]
@@ -102,7 +100,7 @@ const drawGame = function() {
 
 
 // API
-const onStartGame = function(event) {
+const onStartGame = function (event) {
   event.preventDefault()
   over = false
   currentChoice = 'X'
@@ -113,7 +111,7 @@ const onStartGame = function(event) {
     .catch(gameUi.onStartGameFailure)
 }
 
-const onGameHistory = function(event) {
+const onGameHistory = function (event) {
   event.preventDefault()
   const form = event.target
   const data = getFormFields(form)
@@ -123,7 +121,7 @@ const onGameHistory = function(event) {
     .catch(gameUi.onGameHistoryFailure)
 }
 
-const onSaveGame = function(event) {
+const onSaveGame = function (event) {
   event.preventDefault()
 
   gameApi.saveGame(data)
